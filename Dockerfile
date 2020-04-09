@@ -5,8 +5,6 @@
 # Building from Ubuntu Precise
 FROM ubuntu:precise
 
-MAINTAINER Courtney Couch, courtney@moot.it
-
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get upgrade -y
@@ -22,7 +20,6 @@ RUN mkdir -p /stunnel
 VOLUME ["/stunnel"]
 
 ADD stunnel.conf /stunnel/stunnel.conf
-ADD stunnel.pem /stunnel/stunnel.pem
 
 # Build stunnel
 RUN cd /usr/local/src/stunnel-$STUNNEL_VERSION && ./configure && make && make install
